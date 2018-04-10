@@ -8,9 +8,6 @@
 
 
 
-char message1[] = "Temp = 00.0 C";
-char message2[] = "RH   = 00.0 %";
-
 byte const num[12] = {'0','1','2','3','4','5','6','7','8','9'};
 
 int8 temp100,temp10,temp0;
@@ -94,7 +91,7 @@ void main(){
         Temp = T_byte1;
         Temp = (Temp << 8) | T_byte2;
         if (Temp > 0X8000){
-         message1[6] = '-';
+        // message1[6] = '-';
          Temp = Temp & 0X7FFF; }
         else
 
@@ -112,11 +109,11 @@ void main(){
         
 
        
-        lcd_gotoxy(2, 0); lcd_putc("Temp=");lcd_gotoxy(2, 6);
+        lcd_gotoxy(2, 0); lcd_putc("Temp");lcd_gotoxy(2, 5);
         
-       lcd_putc(num[temp100]); lcd_putc(num[temp10]);lcd_putc("."); lcd_putc(num[temp0]); 
+        lcd_putc(num[temp100]); lcd_putc(num[temp10]);lcd_putc("."); lcd_putc(num[temp0]); 
        
-       lcd_gotoxy(2, 9); lcd_putc("RH"); lcd_gotoxy(2, 12);
+       lcd_gotoxy(2, 10); lcd_putc("RH"); lcd_gotoxy(2, 12);
        lcd_putc(num[hum100]); lcd_putc(num[hum10]);lcd_putc("."); lcd_putc(num[hum0]);  lcd_putc("%");      
        
        }
